@@ -9,6 +9,52 @@ body {
 }
 
 #map-canvas {
-	height: 800px;
-	float: right;
+	height: 100%;
+	/*float: right;*/
+	/*position: absolute;*/
+	z-index: 1;
+}
+
+#journey-message {
+	width: 298px;
+}	
+
+#gps-coordinates-header {
+	margin-bottom: 20px;
+	border-bottom: 1px solid black;
+}
+
+.input {
+	position: absolute;
+	z-index: 100;
+	height: 150px;
+	width: 300px;
+	text-align: center;
+	border: 1px solid black;
+	margin-top: 45%;
+	margin-left: 30%;
+	background-color: rgba(192,192,192,0.5);
+}
+
+#dashboard {
+	position: absolute;
+	z-index: 100;
+	background-color: rgba(192,192,192,0.8);
+	height: 100%;
+	width: 250px;
+	overflow-y: scroll;
+}
+
+#buttons {
+	position: absolute;
+	bottom:0;
+}
+
+#journey-name {
+	width: 298px;
+}
+
+.journey-item {
+	border-bottom: 1px solid black;
+	margin-bottom: 20px;
 }

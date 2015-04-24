@@ -1,5 +1,271 @@
-  html { height: 100% }
+.navbar {
+	background-color: white;
+}
 
-  body { height: 100%; margin: 0; padding: 0 }
+.front-bg {
+	position: fixed;
+	width: 200%;
+	height: 200%;
+	background: black;
+	left: -50%;
+	z-index: -10;
+}
 
-  #map-canvas { height: 80% }
+body div {
+	color: white;
+}
+
+body {
+	line-height: 18px;
+	font-family: Arial, sans-serif;
+}
+
+.footer {
+	font-size: 11px;
+	text-align: center;
+}
+
+li a {
+	color: white;
+}
+.list-inline > li {
+	display: inline-block;
+	padding-right: 1px;
+	padding-left: 0px;
+	color: white;
+}
+
+.navbar {
+	height: 46px;
+	width: auto;
+}
+
+.nav li a {
+	overflow: hidden;
+	/*height: 46px;*/
+	color: black;
+	padding: 0;
+	margin: 0 auto;
+	top: 50%;
+	margin-top: -25px;
+	margin-right: 40px;
+}
+
+i {
+	padding-left: 30px;
+	margin-top: 10px;
+}
+
+.front-welcome-text {
+	width: 470px;
+	height: 328px;
+	font-size: 20px;
+	float: left;
+}
+
+.front-signin, .front-signup {
+	width: 300px;
+	float: right;
+	background-color: white;
+	border: 1px solid #e1e8ed;
+	border-radius: 4px;
+}
+
+.front-signin {
+	margin-bottom: 11px;
+}
+
+.front-card {
+	height: 410px;
+	width: 838px;
+	top: 50%;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+h1, h2 {
+	text-rendering: optimizeLegibility;
+}
+h1 {
+	font-size: 38px;
+	line-height: 44px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+h2 {
+	color: black;
+	font-size: 16px;
+	display: block;
+	border-bottom: 1px solid #e1e8ed;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	margin-top: 12px;
+}
+
+p {
+	font-size: 21px;
+	line-height: 31px;
+	margin: 0;
+}
+
+span {
+	color: gray;
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 16px;
+	position: relative;
+}
+
+#login {
+	color: white;
+	background-color: #55acee;
+	border: 1px solid #3b88c3;
+	height: 30px;
+	line-height: 11px;
+}
+
+#sign-up-button {
+	color: black;
+	background-color: #ffac33;
+	background-image: linear-gradient(#ffcc4d, #ffac33);
+	float: right;
+	margin: 1px 12px 10px;
+}
+
+input {
+	border-radius: 5px;
+	border: 1px solid #ccd6dd;
+	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-left: 4px;
+	margin-bottom: 5px;
+	height: 30px;
+}
+
+#signin-username {
+	width: 266px;
+}
+
+#signin-password {
+	margin-right: 15px;
+	height: 30px;
+}
+
+.signin-form {
+	margin: 12px 12px 6px 12px;
+}
+
+.password-input {
+	margin-top: 10px;
+}
+
+#username-signup, #email-signup, #password-signup {
+	width: 266px;
+}
+
+.signin-signup {
+	width: 300px;
+	height: auto;
+	float: right;
+}
+
+#username-signup, #email-signup, #password-signup, #signin-password, #signin-username { 
+	color: black;
+}
+
+.front-bg img {
+	margin: auto;
+	min-width: 50%;
+	min-height: 50%;
+}
+
+label > input {
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#bg img {
+  -webkit-animation-name: bgfade;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+
+  -moz-animation-name: bgfade;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 8s;
+
+  -o-animation-name: bgfade;
+  -o-animation-timing-function: ease-in-out;
+  -o-animation-iteration-count: infinite;
+  -o-animation-duration: 8s;
+
+  animation-name: bgfade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+
+#bg img:nth-of-type(1) {
+  -webkit-animation-delay: 8s;
+  -moz-animation-delay: 8s;
+  -o-animation-delay: 8s;
+  animation-delay: 8s;
+}
+#bg img:nth-of-type(2) {
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  -o-animation-delay: 4s;
+  animation-delay: 4s;
+}
+#bg img:nth-of-type(3) {
+  -webkit-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -o-animation-delay: 0;
+  animation-delay: 0;
+}
+
+@keyframes bgfade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+#bg img:nth-of-type(1) {
+  animation-delay: 8s;
+}
+#bg img:nth-of-type(2) {
+  animation-delay: 4s;
+}
+#bg img:nth-of-type(3) {
+  animation-delay: 0;
+}

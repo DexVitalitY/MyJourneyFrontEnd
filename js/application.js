@@ -1,36 +1,84 @@
-function initialize() {
-  var mapOptions = {
-    center: new google.maps.LatLng(-34.397, 150.644),
-    zoom: 8
-  };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+$(document).ready(function() {
 
-  var drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.MARKER,
-    drawingControl: true,
-    drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_CENTER,
-      drawingModes: [
-        google.maps.drawing.OverlayType.MARKER,
-        google.maps.drawing.OverlayType.CIRCLE,
-        google.maps.drawing.OverlayType.POLYGON,
-        google.maps.drawing.OverlayType.POLYLINE,
-        google.maps.drawing.OverlayType.RECTANGLE
-      ]
-    },
-    markerOptions: {
-      icon: 'images/beachflag.png'
-    },
-    circleOptions: {
-      fillColor: '#ffff00',
-      fillOpacity: 1,
-      strokeWeight: 5,
-      clickable: false,
-      editable: true,
-      zIndex: 1
-    }
-  });
-  drawingManager.setMap(map);
+	// authenRedirect();
+
+	function authenRedirect() {
+		authenticated(function(response){
+			if (response.authenticated) {	
+				window.location.replace("../map.html");
+				console.log(res);
+			}
+		});
+	};
+
+	$('#login').click(function (event){
+		event.preventDefault();
+		signIn(function(){			
+			authenRedirect();	
+		});
+
+	});
+		
+		function signIn(callback) {
+			var request = {
+				type: 'POST',
+				url: 'http://localhost:3000/sessions',
+				data: {
+					user: {
+						username: $('#signin-username').val(),
+						password: $('#signin-password').val()
+					}
+				},
+				dataType: 'json',
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function (response) {
+					console.log(response);
+					return callback();
+				}
+			};
+			$.ajax(request);
+		}
+
+	$('#sign-up-button').click(function (event){
+		event.preventDefault();
+
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/users',
+			crossDomain: true,
+			data: {
+				user: {
+					username: $('#username-signup').val(),
+					email: $('#email-signup').val(),
+					password: $('#password-signup').val()
+				}
+			},
+			dataType: 'json',
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function (response) {
+				console.log(response);
+			}
+		});
+	})
+
+function authenticated(callback) {
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:3000/authenticated',
+		dataType: 'json',
+		xhrFields: {
+					withCredentials: true
+				},
+		success: function(response) {
+			console.log(response);
+			return callback(response);
+		}
+	})
 }
+
+});
