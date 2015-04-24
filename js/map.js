@@ -2,6 +2,7 @@ var coordinates;
 var drawingManager;
 var selectedObject;
 var map;
+var markers = [];
 
 $(document).ready(function() {
 
@@ -26,6 +27,11 @@ function deleteObject() {
   }
 }
 
+function clearMarkers() {
+  markers = [];
+  location.reload();
+}
+
 function getAll() {
   $.ajax({
     type:'GET',
@@ -33,7 +39,7 @@ function getAll() {
     dataType: 'json',
     success: function(response){
       for (var i = 0; i < response.length; i++) {
-        $('#journeys').append('<div class="journey-item"> Journey Name: ' + response[i].name + '<br> Journey Message: ' + response[i].message + '</div>' )
+        $('#journeys').append('<div id="' + response[i]._id + '" class="journey-item"> Journey Name: ' + response[i].name + '<br> Journey Message: ' + response[i].message + '</div>' )
       }
       console.log(response);
     }
@@ -42,16 +48,45 @@ function getAll() {
 
 getAll();
 
-// $('.journey-item').click(function(){
-  
-// })
+$(document).on('click', '.journey-item', function(){
+  var id = $(this).attr('id');
+  console.log(id);
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:3000/journeys/' + id,
+    dataType: 'json',
+    success: function(response){
+      // clearMarkers();
+      console.log(response.journey);
+      console.log('---------------------');
+
+      var keys = Object.keys(response);
+
+      for (var i = 0; i < keys.length; i++) {
+        console.log(response[keys[i]][0] + ' -- ' + response[keys[i]][0]);
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(response.journey[i.toString()][0], response.journey[i.toString()][1]),
+          map: map
+        });
+        markers.push(marker);
+      }
+    }
+  })
+})
 
 $('#delete').click(function() {
   deleteObject();
 })
 
+$('#delete-markers').click(function(){
+  clearMarkers();
+})
+
+
 $('#addJourney').click(function(event){
   event.preventDefault();
+  console.log(typeof(newJourney));
   $.ajax({
     type:'POST',
     url: 'http://localhost:3000/journeys',
@@ -76,6 +111,7 @@ $('#addJourney').click(function(event){
           position: new google.maps.LatLng(newJourney[i][0], newJourney[i][1]),
           map: map
           });
+          markers.push(marker);
         } 
         // markers.push(marker)
       }

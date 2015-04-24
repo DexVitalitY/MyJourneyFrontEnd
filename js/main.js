@@ -77,6 +77,7 @@ var newJourney = [];
 
               console.log(myTags);
               newJourney.push(myTags);
+              console.log(typeof(newJourney));
 
             } catch (error) {
               alert(error);
